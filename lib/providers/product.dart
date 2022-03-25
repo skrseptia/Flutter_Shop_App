@@ -32,10 +32,14 @@ class Product with ChangeNotifier {
     try {
       final response = await http.patch(
         Uri.parse(url),
-        body: json.encode(
-          isFavorite,
-        ),
+        body: json.encode({
+          'isFavorite': isFavorite,
+        }),
       );
+
+      print("response $response");
+      print("body ${response.body}");
+
       if (response.statusCode >= 400) {
         _setFavValue(oldStatus);
       }
