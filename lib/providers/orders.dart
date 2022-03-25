@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+
 import './cart.dart';
 
 class OrderItem {
@@ -32,13 +33,18 @@ class Orders with ChangeNotifier {
 
   Future<void> fetchAndSetOrders() async {
     final url =
-        'https://flutter-update.firebaseio.com/orders/$userId.json?auth=$authToken';
+        'https://shopapp-34312-default-rtdb.firebaseio.com//orders/$userId.json?auth=$authToken';
     final response = await http.get(Uri.parse(url));
+
+    var res = response.body;
+
+    print('response $res');
+
     final List<OrderItem> loadedOrders = [];
     final extractedData = json.decode(response.body) as Map<String, dynamic>;
-    // if (extractedData == null) {
-    //   return;
-    // }
+    if (extractedData == null) {
+      return;
+    }
     extractedData.forEach((orderId, orderData) {
       loadedOrders.add(
         OrderItem(

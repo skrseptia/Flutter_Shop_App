@@ -85,7 +85,7 @@ class Products with ChangeNotifier {
         Uri.parse(url),
       );
 
-      final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      final extractedData = json.decode(response.body);
       if (extractedData == null) {
         return;
       }
