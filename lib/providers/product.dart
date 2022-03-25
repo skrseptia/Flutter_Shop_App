@@ -30,15 +30,12 @@ class Product with ChangeNotifier {
     final String url =
         'https://shopapp-34312-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
     try {
-      final response = await http.patch(
+      final response = await http.put(
         Uri.parse(url),
-        body: json.encode({
-          'isFavorite': isFavorite,
-        }),
+        body: json.encode(
+          isFavorite,
+        ),
       );
-
-      print("response $response");
-      print("body ${response.body}");
 
       if (response.statusCode >= 400) {
         _setFavValue(oldStatus);

@@ -84,16 +84,19 @@ class Products with ChangeNotifier {
       final response = await http.get(
         Uri.parse(url),
       );
+
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
-      // if (extractedData == null) {
-      //   return;
-      // }
+      if (extractedData == null) {
+        return;
+      }
       url =
           'https://shopapp-34312-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
 
       final favoriteResponse = await http.get(Uri.parse(url));
+
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
+
       extractedData.forEach((prodId, prodData) {
         loadedProducts.add(Product(
           id: prodId,
