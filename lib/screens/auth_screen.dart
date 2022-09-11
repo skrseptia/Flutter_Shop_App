@@ -24,17 +24,8 @@ class AuthScreen extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  const Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  const Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: const [0, 1],
-              ),
-            ),
+            decoration:
+                const BoxDecoration(color: Color.fromARGB(255, 53, 0, 75)),
           ),
           SingleChildScrollView(
             child: SizedBox(
@@ -44,36 +35,36 @@ class AuthScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Flexible(
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 20.0),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 94.0),
-                      transform: Matrix4.rotationZ(-8 * pi / 180)
-                        ..translate(-10.0),
-                      // ..translate(-10.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade900,
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                          )
-                        ],
-                      ),
-                      child: Text(
-                        'MyShop',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.secondary,
-                          fontSize: 50,
-                          fontFamily: 'Anton',
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Flexible(
+                  //   child: Container(
+                  //     margin: const EdgeInsets.only(bottom: 20.0),
+                  //     padding: const EdgeInsets.symmetric(
+                  //         vertical: 8.0, horizontal: 94.0),
+                  //     transform: Matrix4.rotationZ(-8 * pi / 180)
+                  //       ..translate(-10.0),
+                  //     // ..translate(-10.0),
+                  //     decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(20),
+                  //       color: Colors.deepOrange.shade900,
+                  //       boxShadow: const [
+                  //         BoxShadow(
+                  //           blurRadius: 8,
+                  //           color: Colors.black26,
+                  //           offset: Offset(0, 2),
+                  //         )
+                  //       ],
+                  //     ),
+                  //     child: Text(
+                  //       'MyShop',
+                  //       style: TextStyle(
+                  //         color: Theme.of(context).colorScheme.secondary,
+                  //         fontSize: 50,
+                  //         fontFamily: 'Anton',
+                  //         fontWeight: FontWeight.normal,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Flexible(
                     flex: deviceSize.width > 600 ? 2 : 1,
                     child: const AuthCard(key: ValueKey(Flex)),
@@ -251,6 +242,7 @@ class _AuthCardState extends State<AuthCard> {
                   const CircularProgressIndicator()
                 else
                   RaisedButton(
+                    color: Colors.purple,
                     child:
                         Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
                     onPressed: _submit,
@@ -259,7 +251,6 @@ class _AuthCardState extends State<AuthCard> {
                     ),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30.0, vertical: 8.0),
-                    color: Theme.of(context).primaryColor,
                     textColor: Theme.of(context).primaryTextTheme.button?.color,
                   ),
                 FlatButton(
@@ -270,7 +261,7 @@ class _AuthCardState extends State<AuthCard> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textColor: Theme.of(context).primaryColor,
+                  textColor: Colors.purple,
                 ),
               ],
             ),

@@ -182,6 +182,7 @@ class Products with ChangeNotifier {
 
       throw HttpException('Could not delete product.');
     }
+    // ignore: null_check_always_fails
     existingProduct = null!;
   }
 }
